@@ -103,6 +103,13 @@ function displayResults() {
         setTimeout(() => {
             createConfetti();
             playSound('success');
+            // Remove confetti container after 3 seconds to restore clickability
+            setTimeout(() => {
+                const confetti = document.getElementById('confetti-container');
+                if (confetti) {
+                    confetti.remove();
+                }
+            }, 3000);
         }, 1500);
     }
 }
@@ -229,9 +236,15 @@ function showBadgeUnlockModal(badge) {
         const badgeModal = new bootstrap.Modal(modal);
         badgeModal.show();
 
-        // Auto-close after 2 seconds
+        // Auto-close after 2 seconds and force-remove all modal artifacts
         setTimeout(() => {
             badgeModal.hide();
+            // Remove any leftover modal backdrops
+            document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+            // Remove 'show' class and inline styles from the modal
+            modal.classList.remove('show');
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
         }, 2000);
     }
 }
