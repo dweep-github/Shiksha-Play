@@ -430,3 +430,13 @@ window.handleLogin = handleLogin;
 window.handleRegister = handleRegister;
 window.quickLogin = quickLogin;
 window.enterGuestMode = enterGuestMode;
+
+// In userManager.createUser
+function createUser(name, userClass) {
+    const users = getUsers(); // get all users from storage
+    const exists = users.some(u => u.name === name && u.class === userClass);
+    if (exists) {
+        throw new Error('User already exists');
+    }
+    // ...create and save user...
+}

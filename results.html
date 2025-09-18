@@ -199,22 +199,17 @@
     </main>
 
     <!-- Badge Unlock Modal -->
-    <div class="modal fade" id="badgeModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-body text-center p-5">
-                    <div class="badge-animation animate__animated animate__bounceIn">
-                        <i class="fas fa-medal fa-5x text-warning mb-3"></i>
-                    </div>
-                    <h3 class="text-primary fw-bold mb-2">New Badge Unlocked!</h3>
-                    <h4 id="badgeName" class="text-success">Achievement Name</h4>
-                    <p id="badgeDescription" class="text-muted">Badge description goes here</p>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                        <i class="fas fa-thumbs-up"></i> Awesome!
-                    </button>
-                </div>
-            </div>
+    <div class="modal fade" id="badgeModal" tabindex="-1" aria-labelledby="badgeName" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header">
+            <h5 class="modal-title" id="badgeName"></h5>
+          </div>
+          <div class="modal-body">
+            <p id="badgeDescription"></p>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Share Modal -->

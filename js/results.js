@@ -228,6 +228,11 @@ function showBadgeUnlockModal(badge) {
         
         const badgeModal = new bootstrap.Modal(modal);
         badgeModal.show();
+
+        // Auto-close after 2 seconds
+        setTimeout(() => {
+            badgeModal.hide();
+        }, 2000);
     }
 }
 

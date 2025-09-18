@@ -207,28 +207,13 @@ function loadQuestion() {
 }
 
 // Select an answer
-function selectAnswer(answerIndex) {
-    if (selectedAnswer !== null) return; // Already answered
-    
-    selectedAnswer = answerIndex;
-    
-    // Update UI to show selection
-    const options = ['option0', 'option1', 'option2'];
-    options.forEach((optionId, index) => {
-        const optionElement = document.getElementById(optionId);
-        if (optionElement) {
-            if (index === answerIndex) {
-                optionElement.classList.add('selected');
-            } else {
-                optionElement.classList.remove('selected');
-            }
-        }
-    });
-    
-    // Show submit button
-    showQuizButton('submitBtn');
-    
-    console.log('Answer selected:', answerIndex);
+function selectAnswer(index) {
+    document.querySelectorAll('.answer-btn').forEach(btn => btn.classList.remove('selected'));
+    const selectedBtn = document.getElementById('option' + index);
+    if (selectedBtn) {
+        selectedBtn.classList.add('selected');
+    }
+    selectedAnswer = index;
 }
 
 // Submit the selected answer
