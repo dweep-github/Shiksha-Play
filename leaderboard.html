@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - ShikshaPlay</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <header id="header-component">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="fas fa-graduation-cap text-primary"></i>
+                    ShikshaPlay
+                </a>
+                
+                <div class="navbar-nav">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                    <a class="nav-link" href="quiz.html">
+                        <i class="fas fa-question-circle"></i> Quiz
+                    </a>
+                    <div class="nav-item">
+                        <span class="nav-link">
+                            <span class="badge bg-success me-2" id="userPoints">0 points</span>
+                            <span id="currentUser">Student</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="leaderboard-page mt-5 pt-3">
+        <div class="container">
+            <!-- Header Section -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="text-center">
+                        <div class="trophy-icon mb-3 animate__animated animate__bounce">
+                            <i class="fas fa-trophy fa-5x text-warning"></i>
+                        </div>
+                        <h1 class="display-4 text-primary fw-bold mb-3">Top Performers</h1>
+                        <p class="lead text-muted">See how you rank among all the amazing learners!</p>
+                        
+                        <!-- Filter Options -->
+                        <div class="filter-options mt-4">
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="filterType" id="filterAll" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="filterAll" onclick="filterLeaderboard('all')">
+                                    <i class="fas fa-users"></i> All Students
+                                </label>
+
+                                <input type="radio" class="btn-check" name="filterType" id="filterClass" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="filterClass" onclick="filterLeaderboard('class')">
+                                    <i class="fas fa-graduation-cap"></i> My Class
+                                </label>
+
+                                <input type="radio" class="btn-check" name="filterType" id="filterWeek" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="filterWeek" onclick="filterLeaderboard('week')">
+                                    <i class="fas fa-calendar-week"></i> This Week
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Current User Highlight -->
+            <div class="row justify-content-center mb-4" id="currentUserSection">
+                <div class="col-lg-8">
+                    <div class="current-user-card card shadow border-primary animate__animated animate__fadeInUp">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 text-center">
+                                    <div class="rank-badge">
+                                        <span class="badge bg-primary fs-4" id="userRank">#0</span>
+                                        <p class="small text-muted mb-0">Your Rank</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-1 text-primary fw-bold" id="userNameDisplay">Your Name</h5>
+                                    <p class="text-muted mb-0" id="userClassDisplay">Your Class</p>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="user-stats">
+                                        <div class="mb-2">
+                                            <span class="badge bg-success fs-6" id="userPointsDisplay">0 points</span>
+                                        </div>
+                                        <div>
+                                            <span class="badge bg-warning text-dark" id="userBadgesDisplay">0 badges</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 3 Podium -->
+            <div class="row justify-content-center mb-5" id="podiumSection">
+                <div class="col-lg-10">
+                    <div class="podium-container">
+                        <div class="row justify-content-center align-items-end">
+                            <!-- 2nd Place -->
+                            <div class="col-md-4">
+                                <div class="podium-card second-place animate__animated animate__fadeInLeft">
+                                    <div class="podium-position">
+                                        <i class="fas fa-medal fa-3x text-secondary"></i>
+                                        <h3>2nd</h3>
+                                    </div>
+                                    <div class="podium-info">
+                                        <h5 id="second-name">-</h5>
+                                        <p class="small" id="second-class">-</p>
+                                        <span class="badge bg-secondary" id="second-points">0 pts</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 1st Place -->
+                            <div class="col-md-4">
+                                <div class="podium-card first-place animate__animated animate__fadeInUp">
+                                    <div class="podium-position">
+                                        <i class="fas fa-crown fa-4x text-warning"></i>
+                                        <h2>1st</h2>
+                                    </div>
+                                    <div class="podium-info">
+                                        <h4 id="first-name">-</h4>
+                                        <p id="first-class">-</p>
+                                        <span class="badge bg-warning text-dark fs-6" id="first-points">0 pts</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3rd Place -->
+                            <div class="col-md-4">
+                                <div class="podium-card third-place animate__animated animate__fadeInRight">
+                                    <div class="podium-position">
+                                        <i class="fas fa-medal fa-3x text-warning"></i>
+                                        <h3>3rd</h3>
+                                    </div>
+                                    <div class="podium-info">
+                                        <h5 id="third-name">-</h5>
+                                        <p class="small" id="third-class">-</p>
+                                        <span class="badge bg-warning text-dark" id="third-points">0 pts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rankings Table -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="rankings-table card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0">
+                                <i class="fas fa-list-ol"></i> Complete Rankings
+                            </h4>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th class="text-center">Rank</th>
+                                            <th>Name</th>
+                                            <th>Class</th>
+                                            <th class="text-center">Points</th>
+                                            <th class="text-center">Badges</th>
+                                            <th class="text-center">Progress</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaderboardTable">
+                                        <tr>
+                                            <td colspan="6" class="text-center p-4">
+                                                <div class="spinner-border text-primary" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                                <p class="mt-2 text-muted">Loading leaderboard...</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motivation Section -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="motivation-section">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="motivation-card card shadow-sm h-100">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-target fa-3x text-success mb-3"></i>
+                                        <h5 class="card-title text-success">Weekly Challenge</h5>
+                                        <p class="card-text">Complete 5 quizzes this week to earn the "Weekly Warrior" badge!</p>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 60%"></div>
+                                        </div>
+                                        <small class="text-muted">3 of 5 completed</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="motivation-card card shadow-sm h-100">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-lightbulb fa-3x text-warning mb-3"></i>
+                                        <h5 class="card-title text-warning">Achievement Tips</h5>
+                                        <ul class="list-unstyled text-start">
+                                            <li><i class="fas fa-check-circle text-success"></i> Take quizzes daily</li>
+                                            <li><i class="fas fa-check-circle text-success"></i> Try different subjects</li>
+                                            <li><i class="fas fa-check-circle text-success"></i> Help your classmates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="row justify-content-center mt-4 mb-5">
+                <div class="col-lg-6">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-primary btn-lg px-4" onclick="takeQuiz()">
+                            <i class="fas fa-play"></i> Take a Quiz
+                        </button>
+                        <button class="btn btn-success btn-lg px-4" onclick="refreshLeaderboard()">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Empty State Modal -->
+    <div class="modal fade" id="emptyStateModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <i class="fas fa-users-slash fa-4x text-muted mb-3"></i>
+                    <h4 class="text-muted">No students found</h4>
+                    <p class="text-muted">Be the first to start learning and climb the leaderboard!</p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="takeQuiz()">
+                        <i class="fas fa-rocket"></i> Start Learning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>

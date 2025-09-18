@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - ShikshaPlay</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <header id="header-component">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="fas fa-graduation-cap text-primary"></i>
+                    ShikshaPlay
+                </a>
+                
+                <div class="navbar-nav ms-auto">
+                    <div class="nav-item">
+                        <span class="nav-link">
+                            <span class="badge bg-success me-2" id="totalUserPoints">0 points</span>
+                            <span id="currentUser">Student</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="results-page mt-5 pt-3">
+        <div class="container">
+            <!-- Score Celebration Section -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="score-celebration card shadow-lg animate__animated animate__bounceIn">
+                        <div class="card-body text-center p-5">
+                            <div class="celebration-icon mb-4">
+                                <i class="fas fa-trophy fa-5x text-warning animate__animated animate__tada"></i>
+                            </div>
+                            
+                            <h1 class="display-4 text-primary fw-bold mb-3">Quiz Complete!</h1>
+                            
+                            <div class="score-display mb-4">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="score-card bg-primary text-white p-3 rounded">
+                                            <h3 class="mb-1" id="pointsEarned">0</h3>
+                                            <small>Points Earned</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="score-card bg-success text-white p-3 rounded">
+                                            <h3 class="mb-1" id="percentageScore">0%</h3>
+                                            <small>Accuracy</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="score-card bg-info text-white p-3 rounded">
+                                            <h3 class="mb-1" id="correctAnswers">0/0</h3>
+                                            <small>Correct Answers</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="performance-message">
+                                <h4 class="text-success fw-bold" id="performanceMessage">Amazing work!</h4>
+                                <p class="text-muted" id="performanceDescription">You're making great progress!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badges Section -->
+            <div class="row justify-content-center mb-5" id="badgesSection">
+                <div class="col-lg-8">
+                    <div class="badges-earned card shadow">
+                        <div class="card-header bg-warning text-dark text-center">
+                            <h3 class="mb-0">
+                                <i class="fas fa-medal"></i> New Achievements Unlocked!
+                            </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row justify-content-center" id="newBadges">
+                                <!-- Badges will be dynamically inserted here -->
+                            </div>
+                            <div class="text-center" id="noBadges">
+                                <p class="text-muted mb-0">Keep learning to unlock more badges!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="progress-overview card shadow">
+                        <div class="card-header bg-light">
+                            <h4 class="mb-0 text-primary">
+                                <i class="fas fa-chart-bar"></i> Quiz Summary
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="summary-item">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Questions Answered:</span>
+                                            <strong id="questionsAnswered">0</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Time Taken:</span>
+                                            <strong id="timeTaken">0 minutes</strong>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span>Subject:</span>
+                                            <strong id="quizSubject">General</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="progress-chart">
+                                        <canvas id="resultChart" width="200" height="200"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="action-buttons card shadow">
+                        <div class="card-body p-4">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary btn-lg" onclick="tryAnotherQuiz()">
+                                            <i class="fas fa-redo"></i>
+                                            Try Another Quiz
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-grid">
+                                        <button class="btn btn-warning btn-lg" onclick="viewLeaderboard()">
+                                            <i class="fas fa-trophy"></i>
+                                            View Leaderboard
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-grid">
+                                        <button class="btn btn-success btn-lg" onclick="shareAchievement()">
+                                            <i class="fas fa-share"></i>
+                                            Share Achievement
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motivational Quote -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="motivational-quote text-center p-4 bg-light rounded shadow-sm">
+                        <i class="fas fa-quote-left text-primary fa-2x mb-3"></i>
+                        <blockquote class="blockquote">
+                            <p class="mb-3 fs-5" id="motivationalQuote">
+                                "The more you learn, the more you realize how much you don't know, and that's the beauty of learning!"
+                            </p>
+                        </blockquote>
+                        <div class="quote-actions mt-3">
+                            <button class="btn btn-outline-primary" onclick="getNewQuote()">
+                                <i class="fas fa-sync-alt"></i> New Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Badge Unlock Modal -->
+    <div class="modal fade" id="badgeModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center p-5">
+                    <div class="badge-animation animate__animated animate__bounceIn">
+                        <i class="fas fa-medal fa-5x text-warning mb-3"></i>
+                    </div>
+                    <h3 class="text-primary fw-bold mb-2">New Badge Unlocked!</h3>
+                    <h4 id="badgeName" class="text-success">Achievement Name</h4>
+                    <p id="badgeDescription" class="text-muted">Badge description goes here</p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fas fa-thumbs-up"></i> Awesome!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal fade" id="shareModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Share Your Achievement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="share-content p-4 bg-light rounded mb-3">
+                        <h6>🎉 I just scored <span id="shareScore">0</span>% on ShikshaPlay! 🎉</h6>
+                        <p class="small text-muted">Join me in this fun learning adventure!</p>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" onclick="copyShareText()">
+                            <i class="fas fa-copy"></i> Copy Text
+                        </button>
+                        <small class="text-success d-none" id="copySuccess">Copied to clipboard!</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confetti-container" class="position-fixed top-0 start-0 w-100 h-100 pointer-events-none" style="z-index: 1000;"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/badges.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/results.js"></script>
+</body>
+</html>

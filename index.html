@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShikshaPlay - Learn. Play. Achieve!</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Component -->
+    <header id="header-component">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="index.html">
+                    <i class="fas fa-graduation-cap text-primary"></i>
+                    ShikshaPlay
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="leaderboard.html"><i class="fas fa-trophy"></i> Leaderboard</a>
+                        </li>
+                        <li class="nav-item" id="auth-nav">
+                            <a class="nav-link btn btn-primary text-white px-3 ms-2" href="login.html">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item d-none" id="user-profile">
+                            <div class="nav-link">
+                                <span class="badge bg-success me-2" id="user-points">0 points</span>
+                                <span id="user-name">Student</span>
+                                <button class="btn btn-sm btn-outline-danger ms-2" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section bg-primary text-white py-5 mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold animate__animated animate__fadeInLeft">
+                            Welcome to ShikshaPlay!
+                        </h1>
+                        <p class="lead animate__animated animate__fadeInLeft animate__delay-1s">
+                            Learn. Play. Achieve! Transform your education into an exciting adventure with quizzes, badges, and challenges.
+                        </p>
+                        <button class="btn btn-warning btn-lg px-4 py-3 animate__animated animate__pulse animate__infinite" 
+                                onclick="startLearning()">
+                            <i class="fas fa-play-circle"></i> Start Learning Now!
+                        </button>
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <div class="hero-illustration animate__animated animate__fadeInRight">
+                            <i class="fas fa-book-open fa-10x text-warning opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section py-5">
+            <div class="container">
+                <div class="row text-center mb-5">
+                    <div class="col-12">
+                        <h2 class="display-5 fw-bold text-primary">Why Choose ShikshaPlay?</h2>
+                        <p class="lead text-muted">Discover the fun way to learn and grow!</p>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card card h-100 shadow-sm hover-lift">
+                            <div class="card-body text-center p-4">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-question-circle fa-3x text-primary"></i>
+                                </div>
+                                <h4 class="card-title">Interactive Quizzes</h4>
+                                <p class="card-text">
+                                    Test your knowledge with fun, engaging quizzes across multiple subjects. 
+                                    Learn while you play!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="feature-card card h-100 shadow-sm hover-lift">
+                            <div class="card-body text-center p-4">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-medal fa-3x text-success"></i>
+                                </div>
+                                <h4 class="card-title">Earn Badges</h4>
+                                <p class="card-text">
+                                    Unlock amazing badges and achievements as you progress. 
+                                    Show off your learning journey!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="feature-card card h-100 shadow-sm hover-lift">
+                            <div class="card-body text-center p-4">
+                                <div class="feature-icon mb-3">
+                                    <i class="fas fa-trophy fa-3x text-warning"></i>
+                                </div>
+                                <h4 class="card-title">Compete & Win</h4>
+                                <p class="card-text">
+                                    Climb the leaderboard and compete with friends. 
+                                    See who's the ultimate learning champion!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section bg-light py-5">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h3 class="display-6 fw-bold text-primary mb-3">Ready to Start Your Learning Adventure?</h3>
+                        <p class="lead text-muted mb-4">
+                            Join thousands of students who are already learning and having fun with ShikshaPlay!
+                        </p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <button class="btn btn-primary btn-lg px-4" onclick="startLearning()">
+                                <i class="fas fa-rocket"></i> Get Started
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg px-4" onclick="viewLeaderboard()">
+                                <i class="fas fa-chart-line"></i> View Leaderboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">
+                <i class="fas fa-heart text-danger"></i> 
+                Made with love for rural students | ShikshaPlay &copy; 2024
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

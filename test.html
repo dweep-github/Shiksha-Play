@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShikshaPlay Test</title>
+</head>
+<body>
+    <h1>ShikshaPlay Test Console</h1>
+    <div id="output"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script>
+        const output = document.getElementById('output');
+        
+        function log(message) {
+            const p = document.createElement('p');
+            p.textContent = message;
+            output.appendChild(p);
+        }
+
+        // Test data loading
+        try {
+            const subjects = getAvailableSubjects();
+            log('✅ Available subjects: ' + subjects.join(', '));
+            
+            const mathQuiz = getQuizForSubject('math', 'beginner');
+            log('✅ Math quiz loaded with ' + mathQuiz.questions.length + ' questions');
+            
+            const badges = getAllBadges();
+            log('✅ ' + badges.length + ' badges loaded');
+            
+            // Test user manager
+            const user = userManager.createUser('Test Student', 'Class 8');
+            log('✅ User created: ' + user.name + ' (' + user.class + ')');
+            
+            // Test quiz progress
+            quizProgressManager.startQuiz(mathQuiz);
+            log('✅ Quiz progress tracking started');
+            
+            // Test badge manager
+            const newBadges = badgeManager.checkForNewBadges(user);
+            log('✅ Badge check completed, found ' + newBadges.length + ' potential badges');
+            
+            log('🎉 All tests passed! ShikshaPlay is working correctly.');
+            
+        } catch (error) {
+            log('❌ Error: ' + error.message);
+            console.error(error);
+        }
+    </script>
+</body>
+</html>
