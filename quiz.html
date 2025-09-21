@@ -186,24 +186,6 @@
                                     <i class="fas fa-flag-checkered"></i> Finish Quiz
                                 </button>
                             </div>
-                             <!-- Calculator Logic -->
-    <script>
-    function calculate() {
-        const input = document.getElementById('calcInput').value;
-        let result;
-        try {
-            // Only allow numbers and math operators
-            if (/^[0-9+\-*/(). ]+$/.test(input)) {
-                result = eval(input);
-                document.getElementById('calcResult').textContent = 'Result: ' + result;
-            } else {
-                document.getElementById('calcResult').textContent = 'Invalid input!';
-            }
-        } catch (e) {
-            document.getElementById('calcResult').textContent = 'Error!';
-        }
-    }
-    </script>
 
                             <!-- Feedback Section -->
                             <div class="feedback-section mt-4 d-none" id="feedbackSection">
