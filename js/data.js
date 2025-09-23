@@ -148,15 +148,15 @@ const mockQuizzes = {
                 {
                     id: "sci_q9",
                     text: "Which part of the plant makes food?",
-                    options: ["Roots", "Leaves", "Flowers"],
-                    correctAnswer: 1,
+                    options: ["Roots", "Flowers", "Leaves"],
+                    correctAnswer: 2,
                     explanation: "Leaves make food for the plant using sunlight, water, and air. This process is called photosynthesis!"
                 },
                 {
                     id: "sci_q10",
                     text: "What sound does thunder make?",
-                    options: ["Whistle", "Boom", "Ring"],
-                    correctAnswer: 1,
+                    options: ["Boom", "Whistle", "Ring"],
+                    correctAnswer: 0,
                     explanation: "Thunder makes a loud 'boom' sound! It happens when lightning heats the air very quickly."
                 }
             ]
@@ -179,8 +179,8 @@ const mockQuizzes = {
                 {
                     id: "eng_q2",
                     text: "What is the plural of 'book'?",
-                    options: ["Book", "Books", "Bookes"],
-                    correctAnswer: 1,
+                    options: ["Books", "Book", "Bookes"],
+                    correctAnswer: 0,
                     explanation: "Books is the plural of book. We add 's' to most words to make them plural."
                 },
                 {
@@ -193,8 +193,8 @@ const mockQuizzes = {
                 {
                     id: "eng_q4",
                     text: "What is the opposite of 'big'?",
-                    options: ["Large", "Small", "Huge"],
-                    correctAnswer: 1,
+                    options: ["Large", "Huge", "Small"],
+                    correctAnswer: 2,
                     explanation: "Small is the opposite of big. These are called opposite words or antonyms!"
                 },
                 {
@@ -207,8 +207,8 @@ const mockQuizzes = {
                 {
                     id: "eng_q6",
                     text: "What do we call a person who teaches?",
-                    options: ["Doctor", "Teacher", "Chef"],
-                    correctAnswer: 1,
+                    options: ["Teacher", "Doctor", "Chef"],
+                    correctAnswer: 0,
                     explanation: "A teacher is a person who teaches students in school. Teachers help us learn!"
                 },
                 {
@@ -221,8 +221,8 @@ const mockQuizzes = {
                 {
                     id: "eng_q8",
                     text: "How many vowels are there in English?",
-                    options: ["4", "5", "6"],
-                    correctAnswer: 1,
+                    options: ["4", "6", "5"],
+                    correctAnswer: 2,
                     explanation: "There are 5 vowels in English: A, E, I, O, U. Sometimes Y can be a vowel too!"
                 },
                 {
@@ -235,8 +235,8 @@ const mockQuizzes = {
                 {
                     id: "eng_q10",
                     text: "Which punctuation mark ends a question?",
-                    options: ["Period (.)", "Question mark (?)", "Exclamation mark (!)"],
-                    correctAnswer: 1,
+                    options: ["Question mark (?)", "Period (.)", "Exclamation mark (!)"],
+                    correctAnswer: 0,
                     explanation: "A question mark (?) ends a question. It shows that someone is asking something!"
                 }
             ]
@@ -259,8 +259,8 @@ const mockQuizzes = {
                 {
                     id: "gen_q2",
                     text: "How many days are there in a week?",
-                    options: ["6", "7", "8"],
-                    correctAnswer: 1,
+                    options: ["7", "6", "8"],
+                    correctAnswer: 0,
                     explanation: "There are 7 days in a week: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday!"
                 },
                 {
@@ -280,8 +280,8 @@ const mockQuizzes = {
                 {
                     id: "gen_q5",
                     text: "What do we use to brush our teeth?",
-                    options: ["Comb", "Toothbrush", "Spoon"],
-                    correctAnswer: 1,
+                    options: ["Comb", "Spoon", "Toothbrush"],
+                    correctAnswer: 2,
                     explanation: "We use a toothbrush to brush our teeth! It helps keep our teeth clean and healthy."
                 },
                 {
@@ -301,8 +301,8 @@ const mockQuizzes = {
                 {
                     id: "gen_q8",
                     text: "Which instrument is used to measure time?",
-                    options: ["Thermometer", "Clock", "Scale"],
-                    correctAnswer: 1,
+                    options: ["Clock", "Thermometer", "Scale"],
+                    correctAnswer: 0,
                     explanation: "A clock is used to measure time! It tells us what time it is during the day."
                 },
                 {
