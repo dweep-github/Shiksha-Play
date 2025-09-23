@@ -240,21 +240,6 @@
     <script src="js/quiz.js"></script>
     <!-- Calculator Logic -->
     <script>
-    function calculate() {
-        const input = document.getElementById('calcInput').value;
-        let result;
-        try {
-            // Only allow numbers and math operators
-            if (/^[0-9+\-*/(). ]+$/.test(input)) {
-                result = eval(input);
-                document.getElementById('calcResult').textContent = 'Result: ' + result;
-            } else {
-                document.getElementById('calcResult').textContent = 'Invalid input!';
-            }
-        } catch (e) {
-            document.getElementById('calcResult').textContent = 'Error!';
-        }
-    }
     </script>
 </body>
 </html>
